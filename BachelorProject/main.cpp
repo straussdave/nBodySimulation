@@ -7,6 +7,7 @@
 
 int main() {
 	sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
+    window.setVerticalSyncEnabled(true);
     sf::CircleShape shape(50.f);
 
     // set the shape color to green
@@ -17,15 +18,19 @@ int main() {
         sf::Event event;
         while (window.pollEvent(event))
         {
+            if (event.type == sf::Event::MouseMoved) {
+                sf::Vector2i mousePosition = sf::Mouse::getPosition(window);
+                shape.setPosition(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y));
+                std::cout << shape.getPosition().x << ';' << shape.getPosition().y << std::endl;
+            }
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-        sf::Vector2i mousePosition = sf::Mouse::getPosition(window);
-        shape.setPosition(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y));
+        
         window.clear();
         window.draw(shape);
         window.display();
-        std::cout << shape.getPosition().x << ';' << shape.getPosition().y << std::endl;
+        
     }
 	return 0;
 }
