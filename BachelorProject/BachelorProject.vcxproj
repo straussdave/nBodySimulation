@@ -19,7 +19,23 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CelestialBody.cpp" />
+    <ClCompile Include="FileHelper.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="SimulationHandler.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CelestialBody.h" />
+    <ClInclude Include="FileHelper.h" />
+    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="SimulationHandler.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="planet_data.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="planet_data_with_moon.json" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

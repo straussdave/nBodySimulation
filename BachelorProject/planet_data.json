@@ -1,0 +1,56 @@
+{
+  "Sun": {
+    "Mass": 333000,
+    "Diameter": 20,
+    "Distance from Sun": 0,
+    "Orbital Velocity": 0
+  },
+  "Mercury": {
+    "Mass": 0.0553,
+    "Diameter": 0.383,
+    "Distance from Sun": 0.387,
+    "Orbital Velocity": 1.59
+  },
+  "Venus": {
+    "Mass": 0.815,
+    "Diameter": 0.949,
+    "Distance from Sun": 0.723,
+    "Orbital Velocity": 1.18
+  },
+  "Earth": {
+    "Mass": 1,
+    "Diameter": 1,
+    "Distance from Sun": 1,
+    "Orbital Velocity": 1
+  },
+  "Mars": {
+    "Mass": 0.107,
+    "Diameter": 0.532,
+    "Distance from Sun": 1.52,
+    "Orbital Velocity": 0.808
+  },
+  "Jupiter": {
+    "Mass": 317.8,
+    "Diameter": 11.21,
+    "Distance from Sun": 5.20,
+    "Orbital Velocity": 0.439
+  },
+  "Saturn": {
+    "Mass": 95.2,
+    "Diameter": 9.45,
+    "Distance from Sun": 9.57,
+    "Orbital Velocity": 0.325
+  },
+  "Uranus": {
+    "Mass": 14.5,
+    "Diameter": 4.01,
+    "Distance from Sun": 19.17,
+    "Orbital Velocity": 0.228
+  },
+  "Neptune": {
+    "Mass": 17.1,
+    "Diameter": 3.88,
+    "Distance from Sun": 30.18,
+    "Orbital Velocity": 0.182
+  }
+}
