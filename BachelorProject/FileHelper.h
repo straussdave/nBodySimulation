@@ -16,7 +16,6 @@ public:
 	
 	
 private:
-	json jsonData;
 	std::string filename;
-	bool read_planet_data();
+	json read_planet_data();
 };

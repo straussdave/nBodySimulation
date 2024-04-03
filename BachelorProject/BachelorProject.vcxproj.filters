@@ -54,5 +54,8 @@
     <None Include="planet_data_with_moon.json">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="stylized_planet_data.json">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

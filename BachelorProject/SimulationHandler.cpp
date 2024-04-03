@@ -1,6 +1,7 @@
 #include "SimulationHandler.h"
 Renderer* Renderer::pinstance_{ nullptr };
 std::mutex Renderer::mutex_;
+using Clock = std::chrono::steady_clock;
 
 /// <summary>
 /// Constructor
@@ -36,22 +37,11 @@ void SimulationHandler::draw_bodies()
 }
 
 /// <summary>
-/// Scales all bodies up or down
-/// </summary>
-/// <param name="scaleFactor"></param>
-void SimulationHandler::scale(float scaleFactor)
-{
-    for (auto& body : bodies)
-    {
-        body.setScale(scaleFactor);
-    }
-}
-
-/// <summary>
 /// Calculates forces and applies them to all bodies
 /// </summary>
-void SimulationHandler::update_bodies()
+void SimulationHandler::update_bodies(float dt)
 {
+    naive_nbody(dt);
 }
 
 /// <summary>
@@ -68,20 +58,47 @@ void SimulationHandler::initialize(const std::string& filename)
             const auto& planetName = planet.key();
             const auto& planetInfo = planet.value();
             
-            double mass = planetInfo["Mass"].get<double>();
-            double diameter = planetInfo["Diameter"].get<double>();
-            double distanceFromSun = planetInfo["Distance from Sun"].get<double>();
-            double orbitalVelocity = planetInfo["Orbital Velocity"].get<double>();
+            float mass = static_cast<float>(planetInfo["Mass"].get<double>());
+            float diameter = static_cast<float>(planetInfo["Diameter"].get<double>());
+            float distanceFromSun = static_cast<float>(planetInfo["Distance from Sun"].get<double>());
+            float orbitalVelocity = static_cast<float>(planetInfo["Orbital Velocity"].get<double>());
+            int maxPos = planetInfo["Max Positions stored"].get<int>();
+            // Extract color components from JSON
+            int red = planetInfo["Color"][0].get<int>();
+            int green = planetInfo["Color"][1].get<int>();
+            int blue = planetInfo["Color"][2].get<int>();
+            int alpha = planetInfo["Color"][3].get<int>();
+
+            // Construct sf::Color object
+            sf::Color color(red, green, blue, alpha);
             sf::Vector2f position = sf::Vector2f(static_cast<float>(widthMid), static_cast<float>(heightMid));
-            position.x += distanceFromSun*100;
-            if (planetName != "Sun")
-                diameter = 5;
-            diameter *= 2;
-            CelestialBody body(planetName, mass, diameter, distanceFromSun, orbitalVelocity, position);
+            position.x += distanceFromSun;
+            CelestialBody body(planetName, mass, diameter, distanceFromSun, sf::Vector2f(0, orbitalVelocity), position, maxPos, color);
             bodies.emplace_back(body);
         }
         catch(const std::exception& e){
             std::cerr << "Error: Could not create Object" << ": " << e.what() << std::endl;
         }
     }
+}
+
+void SimulationHandler::naive_nbody(float dt) 
+{
+    //std::cout << "deltaTime: " << dt << std::endl;
+    for (auto& body : bodies) 
+    {
+        body.calculate_force(dt, bodies);
+    }
+    for (auto& body : bodies)
+    {
+        body.update_position(dt);
+    }
+}
+
+void SimulationHandler::fast_multipole()
+{
+}
+
+void SimulationHandler::barnes_hut()
+{
 }

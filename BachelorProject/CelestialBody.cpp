@@ -8,20 +8,31 @@
 /// <param name="diam"></param>
 /// <param name="distance"></param>
 /// <param name="ov"></param>
-CelestialBody::CelestialBody(std::string n, int m, double diam, double distance, double ov, sf::Vector2f pos)
+CelestialBody::CelestialBody(std::string n, float m, float diam, float distance, sf::Vector2f ov, sf::Vector2f pos, int maxPos, sf::Color clr)
 {
+	direction = sf::Vector2f(0.0f, 1.0f);
 	name = n;
 	mass = m;
 	diameter = diam;
 	distanceFromSun = distance;
 	velocity = ov;
-	acceleration = 0;
 	position = pos;
+	maxOrbitPositions = maxPos;
+	orbitPositions.push_back(position);
+	color = clr;
 }
 
 void CelestialBody::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	sf::Transform transform = getTransform();
+	if (orbitPositions.size() > 1) {
+		sf::VertexArray orbitLine(sf::LineStrip, orbitPositions.size());
+		for (size_t i = 0; i < orbitPositions.size(); ++i) {
+			orbitLine[i].position = orbitPositions[i];
+			orbitLine[i].color = color;
+		}
+		target.draw(orbitLine, transform);
+	}
 	//transform.scale(scaleFactor, scaleFactor);
 	sf::CircleShape circle(diameter / 2.0f);
 	circle.setOrigin(diameter / 2.0f, diameter / 2.0f);
@@ -31,34 +42,63 @@ void CelestialBody::draw(sf::RenderTarget& target, sf::RenderStates states) cons
 }
 
 /// <summary>
-/// Draws the Orbit of the body to the window
-/// </summary>
-void CelestialBody::draw_orbit()
-{
-}
-
-/// <summary>
 /// Updates the position, calculated using a combination of position, velocity and direction
 /// </summary>
 /// <returns>updated position</returns>
-sf::Vector2f CelestialBody::update_position(double deltaTime)
+sf::Vector2f CelestialBody::update_position(float dt)
 {
-	position.x += static_cast<int>(velocity * direction.x * deltaTime);
-	position.y += static_cast<int>(velocity * direction.y * deltaTime);
+	position += velocity * dt;
+	sf::Vector2f distanceVector = sf::Vector2f(orbitPositions.back().x - position.x, orbitPositions.back().y - position.y);
+	if (sqrt(pow(distanceVector.x, 2) + pow(distanceVector.y, 2)) > 5) {
+		orbitPositions.push_back(position);
+		while (orbitPositions.size() > maxOrbitPositions) {
+			//this makes the line decay after reaching max size
+			orbitPositions.pop_front();
+		}
+	}
+	
+	
 	return position;
+}
+
+sf::Color CelestialBody::get_color()
+{
+	return color;
 }
 
 /// <summary>
 /// Updates the velocity using the acceleration of the body
 /// </summary>
 /// <returns>updated velocity</returns>
-double CelestialBody::update_velocity(double deltaTime)
+void CelestialBody::calculate_force(float dt, std::vector<CelestialBody> otherBodies)
 {
-	velocity += acceleration * deltaTime;
-	return velocity;
+	sf::Vector2f force;
+	for (auto& body : otherBodies)
+	{
+		if (body.name != name)
+		{
+			sf::Vector2f distanceVector = sf::Vector2f(body.position.x - position.x, body.position.y - position.y);
+			float vectorMagnitude = sqrt(pow(distanceVector.x, 2) + pow(distanceVector.y, 2));
+			if (vectorMagnitude <= 1) {
+				continue;
+			}
+			sf::Vector2f normalizedVector = distanceVector / vectorMagnitude;
+			force += (g * normalizedVector * mass * body.mass) / vectorMagnitude;
+		}
+	}
+	apply_force(force, dt);
 }
 
-void CelestialBody::setScale(float factor)
-{
-	scaleFactor = factor;
+void CelestialBody::apply_force(sf::Vector2f force, float deltaTime) {
+	acceleration = force / mass;
+	velocity += acceleration * deltaTime;
+	force = sf::Vector2f(0.0f, 0.0f);
+}
+
+float CelestialBody::calculate_orbital_velocity(float m, float distance) {
+	if (distance == 0) {
+		return 0;
+	}
+	std::cout << name << " initial calculated velocity: " << sqrt(g * (100000.0f + mass) / distance) << std::endl;
+	return sqrt(g * 100000 / distance);
 }

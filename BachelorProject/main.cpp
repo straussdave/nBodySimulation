@@ -1,29 +1,33 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
-#include <SFML/Audio.hpp>
-#include <SFML/Network.hpp>
 #include <SFML/Window.hpp>
 #include "SimulationHandler.h"
 #include "Renderer.h"
+#include <chrono>
 
 #define WIN_SIZE 1500, 1000
+using Clock = std::chrono::steady_clock;
 
 int main() 
 {
     sf::ContextSettings settings;
-    settings.antialiasingLevel = 8.0;
+    settings.antialiasingLevel = 8;
 	sf::RenderWindow window(sf::VideoMode(WIN_SIZE), "My window", sf::Style::Close, settings);
     window.setVerticalSyncEnabled(true);
     Renderer* renderer = Renderer::get_instance(window);
 
-    SimulationHandler sim("planet_data.json", WIN_SIZE, window);
-
+    SimulationHandler sim("stylized_planet_data.json", WIN_SIZE, window);
+    
     sf::View view = window.getDefaultView();
     float zoomLevel = 1.0f; // Initial zoom level
-
+    auto start_time = Clock::now();
+    auto end_time = Clock::now();
+    auto elapsed_time = std::chrono::duration_cast<std::chrono::duration<float>>(end_time - start_time);
+    float deltaTime = elapsed_time.count();
     while (window.isOpen())
     {
+        start_time = Clock::now();
         // check all the window's events that were triggered since the last iteration of the loop
         sf::Event event;
         while (window.pollEvent(event))
@@ -39,11 +43,16 @@ int main()
                 view.setSize(window.getDefaultView().getSize().x * zoomLevel, window.getDefaultView().getSize().y * zoomLevel);
             }
         }
-
+        
+        sim.update_bodies(deltaTime);
         window.setView(view);
         renderer->clear();
         sim.draw_bodies();
         renderer->render();
+        end_time = Clock::now();
+        elapsed_time = std::chrono::duration_cast<std::chrono::duration<float>>(end_time - start_time);
+        deltaTime = elapsed_time.count();
     }
+
 	return 0;
 }

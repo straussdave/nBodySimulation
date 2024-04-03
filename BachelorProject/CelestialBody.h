@@ -3,28 +3,34 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
+#include <chrono>
+#include <deque>
 
 class CelestialBody : public sf::Drawable, public sf::Transformable
 {
 public:
-	CelestialBody(std::string n, int m, double diam, double distance, double ov, sf::Vector2f pos);
+	CelestialBody(std::string n, float m, float diam, float distance, sf::Vector2f ov, sf::Vector2f pos, int maxPos, sf::Color clr);
 	sf::Vector2f position; //position is stored as floats for accurate calculation
 	std::string name;
-
+	float mass;
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
-	void setScale(float factor);
-
+	void calculate_force(float dt, std::vector<CelestialBody> otherBodies);
+	sf::Vector2f update_position(float deltaTime);
+	sf::Color get_color();
 private:
-	int mass;
-	double velocity;
-	double acceleration;
-	double diameter;
+	sf::Color color;
+	int counter = 0;
+	float timeFactor = 200.0f;
+	float g = 0.01;
+	int maxOrbitPositions;
+	sf::Vector2f velocity; //pixels per second
+	sf::Vector2f acceleration;
 	sf::Vector2f direction;
-	double distanceFromSun;
-	sf::Color color = sf::Color::White;
+	float diameter;
+	float distanceFromSun;
 	float scaleFactor = 1.0f;
-
-	void draw_orbit();
-	sf::Vector2f update_position(double deltaTime);
-	double update_velocity(double deltaTime);
+	std::deque<sf::Vector2f> orbitPositions;
+	
+	void apply_force(sf::Vector2f force, float deltaTime);
+	float calculate_orbital_velocity(float mass, float distance);
 };

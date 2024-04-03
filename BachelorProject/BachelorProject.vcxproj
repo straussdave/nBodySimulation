@@ -36,6 +36,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="planet_data_with_moon.json" />
+    <None Include="stylized_planet_data.json" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

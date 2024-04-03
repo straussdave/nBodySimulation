@@ -16,8 +16,6 @@ public:
     void add(sf::Drawable& drawable);
     void render();
     void clear();
-    void scale(float scaleFactor);
-
 private:
     static Renderer* pinstance_;
     static std::mutex mutex_;
