@@ -39,10 +39,11 @@ void Renderer::add(sf::Drawable& drawable)
 }
 
 /// <summary>
-/// Renders all drawables in vector
+/// Clears and renders all drawables in vector
 /// </summary>
 void Renderer::render()
 {
+    clear();
     for (auto& drawable : drawablesVector) {
         window.draw(*drawable);
     }
@@ -50,10 +51,9 @@ void Renderer::render()
 }
 
 /// <summary>
-/// Clears drawables vector and window
+/// Clears window
 /// </summary>
 void Renderer::clear()
 {
-    drawablesVector.clear();
     window.clear();
 }

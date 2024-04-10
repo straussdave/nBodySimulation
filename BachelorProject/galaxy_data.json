@@ -1,0 +1,74 @@
+{
+  "BlackHole": {
+    "Mass": 100000,
+    "Diameter": 50,
+    "Distance from Sun": 0,
+    "Orbital Velocity": 0,
+    "Max Positions stored": 1,
+    "Color": [ 255, 255, 255, 255 ]
+  },
+  "Mercury": {
+    "Mass": 1,
+    "Diameter": 2,
+    "Distance from Sun": 0,
+    "Orbital Velocity": 0,
+    "Max Positions stored": 0,
+    "Color": [ 255, 255, 255, 255 ]
+  },
+  "Venus": {
+    "Mass": 2,
+    "Diameter": 7,
+    "Distance from Sun": 100,
+    "Orbital Velocity": 31.62,
+    "Max Positions stored": 180,
+    "Color": [ 255, 215, 0, 255 ]
+  },
+  "Earth": {
+    "Mass": 5,
+    "Diameter": 12,
+    "Distance from Sun": 150,
+    "Orbital Velocity": 31.62,
+    "Max Positions stored": 230,
+    "Color": [ 0, 0, 255, 255 ]
+  },
+  "Mars": {
+    "Mass": 4,
+    "Diameter": 8,
+    "Distance from Sun": 220,
+    "Orbital Velocity": 31.62,
+    "Max Positions stored": 300,
+    "Color": [ 255, 69, 0, 255 ]
+  },
+  "Jupiter": {
+    "Mass": 20,
+    "Diameter": 25,
+    "Distance from Sun": 500,
+    "Orbital Velocity": 31.62,
+    "Max Positions stored": 1000,
+    "Color": [ 210, 180, 140, 255 ]
+  },
+  "Saturn": {
+    "Mass": 30,
+    "Diameter": 50,
+    "Distance from Sun": 900,
+    "Orbital Velocity": 31.62,
+    "Max Positions stored": 2000,
+    "Color": [ 210, 180, 140, 255 ]
+  },
+  "Uranus": {
+    "Mass": 15,
+    "Diameter": 20,
+    "Distance from Sun": 1500,
+    "Orbital Velocity": 31.62,
+    "Max Positions stored": 3000,
+    "Color": [ 135, 206, 235, 255 ]
+  },
+  "Neptune": {
+    "Mass": 10,
+    "Diameter": 15,
+    "Distance from Sun": 2000,
+    "Orbital Velocity": 31.62,
+    "Max Positions stored": 5000,
+    "Color": [ 30, 144, 255, 255 ]
+  }
+}

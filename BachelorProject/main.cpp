@@ -41,13 +41,11 @@ int main()
                 zoomLevel *= 1 - event.mouseWheelScroll.delta * 0.1f;
                 zoomLevel = std::max(0.1f, std::min(zoomLevel, 10.0f)); //clamp zoom lvl
                 view.setSize(window.getDefaultView().getSize().x * zoomLevel, window.getDefaultView().getSize().y * zoomLevel);
+                window.setView(view);
             }
         }
         
         sim.update_bodies(deltaTime);
-        window.setView(view);
-        renderer->clear();
-        sim.draw_bodies();
         renderer->render();
         end_time = Clock::now();
         elapsed_time = std::chrono::duration_cast<std::chrono::duration<float>>(end_time - start_time);

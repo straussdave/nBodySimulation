@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BarnesHut.cpp" />
     <ClCompile Include="CelestialBody.cpp" />
     <ClCompile Include="FileHelper.cpp" />
     <ClCompile Include="main.cpp" />
@@ -26,6 +27,7 @@
     <ClCompile Include="SimulationHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BarnesHut.h" />
     <ClInclude Include="CelestialBody.h" />
     <ClInclude Include="FileHelper.h" />
     <ClInclude Include="Renderer.h" />

@@ -15,13 +15,14 @@ public:
 	float mass;
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	void calculate_force(float dt, std::vector<CelestialBody> otherBodies);
+	void apply_force(sf::Vector2f force, float deltaTime);
 	sf::Vector2f update_position(float deltaTime);
 	sf::Color get_color();
 private:
 	sf::Color color;
 	int counter = 0;
 	float timeFactor = 200.0f;
-	float g = 0.01;
+	float g = 0.01f;
 	int maxOrbitPositions;
 	sf::Vector2f velocity; //pixels per second
 	sf::Vector2f acceleration;
@@ -31,6 +32,5 @@ private:
 	float scaleFactor = 1.0f;
 	std::deque<sf::Vector2f> orbitPositions;
 	
-	void apply_force(sf::Vector2f force, float deltaTime);
 	float calculate_orbital_velocity(float mass, float distance);
 };

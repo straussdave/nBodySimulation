@@ -12,6 +12,9 @@ SimulationHandler::SimulationHandler(const std::string& filename, int w, int h, 
 {
     initialize(filename);
     renderer = Renderer::get_instance(window);
+    register_body_to_renderer();
+    bh = new BarnesHut(theta);
+    barnes_hut(0.1f);
 }
 
 /// <summary>
@@ -26,9 +29,9 @@ void SimulationHandler::print_bodies_positions()
 }
 
 /// <summary>
-/// Sends bodies positions and size to renderer
+/// Sends bodies to renderer
 /// </summary>
-void SimulationHandler::draw_bodies()
+void SimulationHandler::register_body_to_renderer()
 {
     for (auto& body : bodies) 
     {
@@ -41,7 +44,6 @@ void SimulationHandler::draw_bodies()
 /// </summary>
 void SimulationHandler::update_bodies(float dt)
 {
-    naive_nbody(dt);
 }
 
 /// <summary>
@@ -53,8 +55,10 @@ void SimulationHandler::initialize(const std::string& filename)
 	planetData = fh.get_planet_data();
     int heightMid = height / 2;
     int widthMid = width / 2;
-    for (auto& planet : planetData.items()) {
-        try {
+    for (auto& planet : planetData.items()) 
+    {
+        try 
+        {
             const auto& planetName = planet.key();
             const auto& planetInfo = planet.value();
             
@@ -84,7 +88,6 @@ void SimulationHandler::initialize(const std::string& filename)
 
 void SimulationHandler::naive_nbody(float dt) 
 {
-    //std::cout << "deltaTime: " << dt << std::endl;
     for (auto& body : bodies) 
     {
         body.calculate_force(dt, bodies);
@@ -95,10 +98,15 @@ void SimulationHandler::naive_nbody(float dt)
     }
 }
 
-void SimulationHandler::fast_multipole()
+void SimulationHandler::fast_multipole(float dt)
 {
 }
 
-void SimulationHandler::barnes_hut()
+void SimulationHandler::barnes_hut(float dt)
 {
+    bh->build_quadtree(bodies);
+    //for (auto& body : bodies) {
+    //    sf::Vector2f force = calculate_force_from_quadtree(root, &body);
+    //    body.apply_force(force, dt);
+    //}
 }
