@@ -13,7 +13,7 @@ SimulationHandler::SimulationHandler(const std::string& filename, int w, int h, 
     initialize(filename);
     renderer = Renderer::get_instance(window);
     register_body_to_renderer();
-    bh = new BarnesHut(theta);
+    bh = new BarnesHut(theta, g);
     barnes_hut(0.1f);
 }
 
@@ -44,6 +44,7 @@ void SimulationHandler::register_body_to_renderer()
 /// </summary>
 void SimulationHandler::update_bodies(float dt)
 {
+    barnes_hut(dt);
 }
 
 /// <summary>
@@ -77,7 +78,7 @@ void SimulationHandler::initialize(const std::string& filename)
             sf::Color color(red, green, blue, alpha);
             sf::Vector2f position = sf::Vector2f(static_cast<float>(widthMid), static_cast<float>(heightMid));
             position.x += distanceFromSun;
-            CelestialBody body(planetName, mass, diameter, distanceFromSun, sf::Vector2f(0, orbitalVelocity), position, maxPos, color);
+            CelestialBody body(planetName, mass, diameter, distanceFromSun, sf::Vector2f(0, orbitalVelocity), position, maxPos, color, g);
             bodies.emplace_back(body);
         }
         catch(const std::exception& e){
@@ -105,8 +106,15 @@ void SimulationHandler::fast_multipole(float dt)
 void SimulationHandler::barnes_hut(float dt)
 {
     bh->build_quadtree(bodies);
-    //for (auto& body : bodies) {
-    //    sf::Vector2f force = calculate_force_from_quadtree(root, &body);
-    //    body.apply_force(force, dt);
-    //}
+
+    for (auto& body : bodies) {
+        body.apply_force(bh->calculate_force_from_quadtree(&body), dt);
+    }
+
+    bh->destroy_quadtree();
+
+    for (auto& body : bodies)
+    {
+        body.update_position(dt);
+    }
 }

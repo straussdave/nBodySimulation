@@ -9,7 +9,7 @@
 class CelestialBody : public sf::Drawable, public sf::Transformable
 {
 public:
-	CelestialBody(std::string n, float m, float diam, float distance, sf::Vector2f ov, sf::Vector2f pos, int maxPos, sf::Color clr);
+	CelestialBody(std::string n, float m, float diam, float distance, sf::Vector2f ov, sf::Vector2f pos, int maxPos, sf::Color clr, float G);
 	sf::Vector2f position; //position is stored as floats for accurate calculation
 	std::string name;
 	float mass;
@@ -22,9 +22,9 @@ private:
 	sf::Color color;
 	int counter = 0;
 	float timeFactor = 200.0f;
-	float g = 0.01f;
+	float g;
 	int maxOrbitPositions;
-	sf::Vector2f velocity; //pixels per second
+	sf::Vector2f velocity;
 	sf::Vector2f acceleration;
 	sf::Vector2f direction;
 	float diameter;

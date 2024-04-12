@@ -8,7 +8,7 @@
 /// <param name="diam"></param>
 /// <param name="distance"></param>
 /// <param name="ov"></param>
-CelestialBody::CelestialBody(std::string n, float m, float diam, float distance, sf::Vector2f ov, sf::Vector2f pos, int maxPos, sf::Color clr)
+CelestialBody::CelestialBody(std::string n, float m, float diam, float distance, sf::Vector2f ov, sf::Vector2f pos, int maxPos, sf::Color clr, float G)
 {
 	direction = sf::Vector2f(0.0f, 1.0f);
 	name = n;
@@ -20,6 +20,7 @@ CelestialBody::CelestialBody(std::string n, float m, float diam, float distance,
 	maxOrbitPositions = maxPos;
 	orbitPositions.push_back(position);
 	color = clr;
+	g = G;
 }
 
 void CelestialBody::draw(sf::RenderTarget& target, sf::RenderStates states) const
