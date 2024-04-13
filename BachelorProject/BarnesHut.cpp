@@ -1,6 +1,6 @@
 #include "BarnesHut.h"
 
-BarnesHut::BarnesHut(double theta, float g) : root(create_quad_tree_root_node()), theta(theta), g(g) {}
+BarnesHut::BarnesHut(double theta, float g) : root(create_quad_tree_root_node()), theta(theta), g(g) { }
 
 BarnesHut::~BarnesHut() {
     delete root;
@@ -196,7 +196,7 @@ sf::Vector2f BarnesHut::calculate_force_from_node(QuadtreeNode* node, CelestialB
     {
         if (calculate_distance_ratio(node, body) < theta)
         {
-            return calculate_force(body, node);
+            return calculate_force(body, node); 
         }
         //Otherwise, run the procedure recursively on each of the current node’s children.
         else

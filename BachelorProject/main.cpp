@@ -46,11 +46,12 @@ int main()
         }
         
         sim.update_bodies(deltaTime);
-        renderer->render();
         end_time = Clock::now();
         elapsed_time = std::chrono::duration_cast<std::chrono::duration<float>>(end_time - start_time);
-        deltaTime = elapsed_time.count();
+        deltaTime = elapsed_time.count(); //the delta time is always delayed by one loop, but thats ok
     }
+
+    sim.save_results();
 
 	return 0;
 }

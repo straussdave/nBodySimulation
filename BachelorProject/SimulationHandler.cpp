@@ -13,8 +13,7 @@ SimulationHandler::SimulationHandler(const std::string& filename, int w, int h, 
     initialize(filename);
     renderer = Renderer::get_instance(window);
     register_body_to_renderer();
-    bh = new BarnesHut(theta, g);
-    barnes_hut(0.1f);
+    bh = new BarnesHut(0.5, g);
 }
 
 /// <summary>
@@ -39,12 +38,19 @@ void SimulationHandler::register_body_to_renderer()
     }
 }
 
+int SimulationHandler::save_results()
+{
+    FileHelper fh("results.txt");
+    return fh.write_results_to_file(results);
+}
+
 /// <summary>
 /// Calculates forces and applies them to all bodies
 /// </summary>
 void SimulationHandler::update_bodies(float dt)
 {
     barnes_hut(dt);
+    renderer->render();
 }
 
 /// <summary>
@@ -89,6 +95,7 @@ void SimulationHandler::initialize(const std::string& filename)
 
 void SimulationHandler::naive_nbody(float dt) 
 {
+    auto start_time = Clock::now();
     for (auto& body : bodies) 
     {
         body.calculate_force(dt, bodies);
@@ -97,6 +104,10 @@ void SimulationHandler::naive_nbody(float dt)
     {
         body.update_position(dt);
     }
+    auto end_time = Clock::now();
+    auto elapsed_time = std::chrono::duration_cast<std::chrono::duration<float>>(end_time - start_time);
+    float deltaTime = elapsed_time.count();
+    results.push_back(deltaTime);
 }
 
 void SimulationHandler::fast_multipole(float dt)
@@ -105,6 +116,8 @@ void SimulationHandler::fast_multipole(float dt)
 
 void SimulationHandler::barnes_hut(float dt)
 {
+    auto start_time = Clock::now();
+    
     bh->build_quadtree(bodies);
 
     for (auto& body : bodies) {
@@ -117,4 +130,9 @@ void SimulationHandler::barnes_hut(float dt)
     {
         body.update_position(dt);
     }
+
+    auto end_time = Clock::now();
+    auto elapsed_time = std::chrono::duration_cast<std::chrono::duration<float>>(end_time - start_time);
+    float deltaTime = elapsed_time.count();
+    results.push_back(deltaTime);
 }

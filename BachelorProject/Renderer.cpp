@@ -1,5 +1,4 @@
 #include "Renderer.h"
-#include <iostream>
 
 /// <summary>
 /// Constructor
@@ -20,7 +19,6 @@ Renderer::~Renderer()
 /// <param name="window"></param>
 /// <returns></returns>
 Renderer* Renderer::get_instance(sf::RenderWindow& window) {
-
     std::lock_guard<std::mutex> lock(mutex_);
     if (pinstance_ == nullptr)
     {

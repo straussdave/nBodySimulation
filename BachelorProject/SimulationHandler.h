@@ -16,6 +16,7 @@ public:
 	void update_bodies(float dt);
 	void print_bodies_positions();
 	void register_body_to_renderer();
+	int save_results();
 	
 private:
 	Renderer* renderer;
@@ -27,6 +28,7 @@ private:
 	BarnesHut* bh;
 	double theta;
 	float g = 0.01f;
+	std::vector<float> results;
 
 	void initialize(const std::string& filename);
 

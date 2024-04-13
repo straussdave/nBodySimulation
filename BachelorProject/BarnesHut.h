@@ -1,6 +1,5 @@
 #pragma once
 #include "CelestialBody.h"
-#include "Renderer.h"
 class BarnesHut
 {
 	
