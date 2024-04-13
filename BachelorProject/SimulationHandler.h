@@ -27,7 +27,7 @@ private:
 	json planetData;
 	BarnesHut* bh;
 	double theta;
-	float g = 0.01f;
+	float g;
 	std::vector<float> results;
 
 	void initialize(const std::string& filename);

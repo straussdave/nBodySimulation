@@ -66,26 +66,31 @@ void SimulationHandler::initialize(const std::string& filename)
     {
         try 
         {
-            const auto& planetName = planet.key();
-            const auto& planetInfo = planet.value();
-            
-            float mass = static_cast<float>(planetInfo["Mass"].get<double>());
-            float diameter = static_cast<float>(planetInfo["Diameter"].get<double>());
-            float distanceFromSun = static_cast<float>(planetInfo["Distance from Sun"].get<double>());
-            float orbitalVelocity = static_cast<float>(planetInfo["Orbital Velocity"].get<double>());
-            int maxPos = planetInfo["Max Positions stored"].get<int>();
-            // Extract color components from JSON
-            int red = planetInfo["Color"][0].get<int>();
-            int green = planetInfo["Color"][1].get<int>();
-            int blue = planetInfo["Color"][2].get<int>();
-            int alpha = planetInfo["Color"][3].get<int>();
+            const auto& key = planet.key();
+            const auto& value = planet.value();
+            if (key != "g")
+            {
+                float mass = static_cast<float>(value["Mass"].get<double>());
+                float diameter = static_cast<float>(value["Diameter"].get<double>());
+                float distanceFromSun = static_cast<float>(value["Distance from Sun"].get<double>());
+                float orbitalVelocity = static_cast<float>(value["Orbital Velocity"].get<double>());
+                int maxPos = value["Max Positions stored"].get<int>();
+                // Extract color components from JSON
+                int red = value["Color"][0].get<int>();
+                int green = value["Color"][1].get<int>();
+                int blue = value["Color"][2].get<int>();
+                int alpha = value["Color"][3].get<int>();
 
-            // Construct sf::Color object
-            sf::Color color(red, green, blue, alpha);
-            sf::Vector2f position = sf::Vector2f(static_cast<float>(widthMid), static_cast<float>(heightMid));
-            position.x += distanceFromSun;
-            CelestialBody body(planetName, mass, diameter, distanceFromSun, sf::Vector2f(0, orbitalVelocity), position, maxPos, color, g);
-            bodies.emplace_back(body);
+                // Construct sf::Color object
+                sf::Color color(red, green, blue, alpha);
+                sf::Vector2f position = sf::Vector2f(static_cast<float>(widthMid), static_cast<float>(heightMid));
+                position.x += distanceFromSun;
+                CelestialBody body(key, mass, diameter, distanceFromSun, sf::Vector2f(0, orbitalVelocity), position, maxPos, color, g);
+                bodies.emplace_back(body);
+            }
+            else {
+                g = value;
+            }
         }
         catch(const std::exception& e){
             std::cerr << "Error: Could not create Object" << ": " << e.what() << std::endl;
