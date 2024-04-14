@@ -31,6 +31,4 @@ private:
 	float distanceFromSun;
 	float scaleFactor = 1.0f;
 	std::deque<sf::Vector2f> orbitPositions;
-	
-	float calculate_orbital_velocity(float mass, float distance);
 };

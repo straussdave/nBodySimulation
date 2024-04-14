@@ -11,6 +11,7 @@ Renderer::Renderer(sf::RenderWindow& window) : window(window) {}
 /// </summary>
 Renderer::~Renderer()
 {
+    delete pinstance_;
 }
 
 /// <summary>

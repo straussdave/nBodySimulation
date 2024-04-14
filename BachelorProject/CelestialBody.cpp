@@ -80,11 +80,9 @@ void CelestialBody::calculate_force(float dt, std::vector<CelestialBody> otherBo
 		{
 			sf::Vector2f distanceVector = sf::Vector2f(body.position.x - position.x, body.position.y - position.y);
 			float vectorMagnitude = sqrt(pow(distanceVector.x, 2) + pow(distanceVector.y, 2));
-			if (vectorMagnitude <= 1) {
-				continue;
-			}
+			vectorMagnitude += 0.01f;
 			sf::Vector2f normalizedVector = distanceVector / vectorMagnitude;
-			force += (g * normalizedVector * mass * body.mass) / vectorMagnitude;
+			force += (g * normalizedVector * mass * body.mass) / pow(vectorMagnitude, 2.0f);
 		}
 	}
 	apply_force(force, dt);
@@ -93,13 +91,4 @@ void CelestialBody::calculate_force(float dt, std::vector<CelestialBody> otherBo
 void CelestialBody::apply_force(sf::Vector2f force, float deltaTime) {
 	acceleration = force / mass;
 	velocity += acceleration * deltaTime;
-	force = sf::Vector2f(0.0f, 0.0f);
-}
-
-float CelestialBody::calculate_orbital_velocity(float m, float distance) {
-	if (distance == 0) {
-		return 0;
-	}
-	std::cout << name << " initial calculated velocity: " << sqrt(g * (100000.0f + mass) / distance) << std::endl;
-	return sqrt(g * 100000 / distance);
 }

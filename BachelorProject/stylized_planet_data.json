@@ -1,5 +1,5 @@
 {
-  "g": 0.01,
+  "g": 1,
   "Sun": {
     "Mass": 100000,
     "Diameter": 50,
@@ -12,8 +12,8 @@
     "Mass": 1,
     "Diameter": 5,
     "Distance from Sun": 35,
-    "Orbital Velocity": 31.62,
-    "Max Positions stored": 10,
+    "Orbital Velocity": 53,
+    "Max Positions stored": 52,
     "Color": [ 192, 192, 192, 255 ]
   },
   "Venus": {
@@ -21,55 +21,55 @@
     "Diameter": 7,
     "Distance from Sun": 100,
     "Orbital Velocity": 31.62,
-    "Max Positions stored": 20,
+    "Max Positions stored": 130,
     "Color": [ 255, 215, 0, 255 ]
   },
   "Earth": {
     "Mass": 5,
     "Diameter": 12,
     "Distance from Sun": 150,
-    "Orbital Velocity": 31.62,
-    "Max Positions stored": 30,
+    "Orbital Velocity": 25,
+    "Max Positions stored": 200,
     "Color": [ 0, 0, 255, 255 ]
   },
   "Mars": {
     "Mass": 4,
     "Diameter": 8,
     "Distance from Sun": 220,
-    "Orbital Velocity": 31.62,
-    "Max Positions stored": 50,
+    "Orbital Velocity": 21,
+    "Max Positions stored": 300,
     "Color": [ 255, 69, 0, 255 ]
   },
   "Jupiter": {
     "Mass": 20,
     "Diameter": 25,
     "Distance from Sun": 500,
-    "Orbital Velocity": 31.62,
-    "Max Positions stored": 100,
+    "Orbital Velocity": 14.2,
+    "Max Positions stored": 600,
     "Color": [ 210, 180, 140, 255 ]
   },
-  "Saturn": {
+  "Saturn": { 
     "Mass": 30,
     "Diameter": 50,
     "Distance from Sun": 900,
-    "Orbital Velocity": 31.62,
-    "Max Positions stored": 200,
+    "Orbital Velocity": 10.6,
+    "Max Positions stored": 1000,
     "Color": [ 210, 180, 140, 255 ]
   },
   "Uranus": {
     "Mass": 15,
     "Diameter": 20,
     "Distance from Sun": 1500,
-    "Orbital Velocity": 31.62,
-    "Max Positions stored": 300,
+    "Orbital Velocity": 8.2,
+    "Max Positions stored": 2000,
     "Color": [ 135, 206, 235, 255 ]
   },
   "Neptune": {
     "Mass": 10,
     "Diameter": 15,
     "Distance from Sun": 2000,
-    "Orbital Velocity": 31.62,
-    "Max Positions stored": 500,
+    "Orbital Velocity": 7,
+    "Max Positions stored": 3000,
     "Color": [ 30, 144, 255, 255 ]
   }
 }

@@ -16,6 +16,11 @@ SimulationHandler::SimulationHandler(const std::string& filename, int w, int h, 
     bh = new BarnesHut(0.5, g);
 }
 
+SimulationHandler::~SimulationHandler()
+{
+    delete bh;
+}
+
 /// <summary>
 /// Prints every bodies position to console
 /// </summary>
@@ -49,7 +54,14 @@ int SimulationHandler::save_results()
 /// </summary>
 void SimulationHandler::update_bodies(float dt)
 {
+    auto start_time = Clock::now();
     barnes_hut(dt);
+
+
+    auto end_time = Clock::now();
+    auto elapsed_time = std::chrono::duration_cast<std::chrono::duration<float>>(end_time - start_time);
+    float deltaTime = elapsed_time.count();
+    results.push_back(deltaTime);
     renderer->render();
 }
 
@@ -120,9 +132,7 @@ void SimulationHandler::fast_multipole(float dt)
 }
 
 void SimulationHandler::barnes_hut(float dt)
-{
-    auto start_time = Clock::now();
-    
+{    
     bh->build_quadtree(bodies);
 
     for (auto& body : bodies) {
@@ -135,9 +145,4 @@ void SimulationHandler::barnes_hut(float dt)
     {
         body.update_position(dt);
     }
-
-    auto end_time = Clock::now();
-    auto elapsed_time = std::chrono::duration_cast<std::chrono::duration<float>>(end_time - start_time);
-    float deltaTime = elapsed_time.count();
-    results.push_back(deltaTime);
 }

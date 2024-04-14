@@ -15,7 +15,6 @@ int main()
     settings.antialiasingLevel = 8;
 	sf::RenderWindow window(sf::VideoMode(WIN_SIZE), "My window", sf::Style::Close, settings);
     window.setVerticalSyncEnabled(true);
-    Renderer* renderer = Renderer::get_instance(window);
 
     SimulationHandler sim("stylized_planet_data.json", WIN_SIZE, window);
     

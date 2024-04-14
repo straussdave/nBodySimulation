@@ -213,12 +213,9 @@ sf::Vector2f BarnesHut::calculate_force(CelestialBody* body, QuadtreeNode* node)
 {
     sf::Vector2f distanceVector = sf::Vector2f(node->centerOfMass.x - body->position.x, node->centerOfMass.y - body->position.y);
     float vectorMagnitude = sqrt(pow(distanceVector.x, 2) + pow(distanceVector.y, 2));
-    if (vectorMagnitude <= 0.1f) {
-        //avoid division by zero
-        vectorMagnitude = 0.1f;
-    }
+    vectorMagnitude += 0.01f;
     sf::Vector2f normalizedVector = distanceVector / vectorMagnitude;
-    return (g * normalizedVector * body->mass * node->totalMass) / vectorMagnitude;
+    return (g * normalizedVector * body->mass * node->totalMass) / pow(vectorMagnitude,2.0f);
 }
 
 float BarnesHut::calculate_distance_ratio(QuadtreeNode* node, CelestialBody* body)

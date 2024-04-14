@@ -13,6 +13,7 @@ class SimulationHandler
 
 public:
 	SimulationHandler(const std::string& filename, int w, int h, sf::RenderWindow& win);
+	~SimulationHandler();
 	void update_bodies(float dt);
 	void print_bodies_positions();
 	void register_body_to_renderer();
