@@ -1,0 +1,419 @@
+{
+  "g": 1,
+  "Sun": {
+    "Mass": 100000,
+    "Diameter": 50,
+    "Distance from Sun": 0,
+    "Orbital Velocity": 0,
+    "Max Positions stored": 1,
+    "Color": [ 255, 255, 0, 255 ]
+  },
+  "Mercury": {
+    "Mass": 1,
+    "Diameter": 5,
+    "Distance from Sun": 35,
+    "Orbital Velocity": 53,
+    "Max Positions stored": 52,
+    "Color": [ 192, 192, 192, 255 ]
+  },
+  "1": {
+    "Mass": 2,
+    "Diameter": 7,
+    "Distance from Sun": 60,
+    "Orbital Velocity": 33,
+    "Max Positions stored": 130,
+    "Color": [ 100, 200, 50, 255 ]
+  },
+  "Venus": {
+    "Mass": 2,
+    "Diameter": 7,
+    "Distance from Sun": 100,
+    "Orbital Velocity": 31.62,
+    "Max Positions stored": 130,
+    "Color": [ 255, 215, 0, 255 ]
+  },
+  "Earth": {
+    "Mass": 5,
+    "Diameter": 12,
+    "Distance from Sun": 150,
+    "Orbital Velocity": 25,
+    "Max Positions stored": 200,
+    "Color": [ 0, 0, 255, 255 ]
+  },
+  "Moon": {
+    "Mass": 0.001,
+    "Diameter": 1,
+    "Distance from Sun": 152,
+    "Orbital Velocity": 26,
+    "Max Positions stored": 50,
+    "Color": [ 255, 255, 255, 100 ]
+  },
+  "Mars": {
+    "Mass": 4,
+    "Diameter": 8,
+    "Distance from Sun": 200,
+    "Orbital Velocity": 21,
+    "Max Positions stored": 300,
+    "Color": [ 255, 69, 0, 255 ]
+  },
+  "Jupiter": {
+    "Mass": 20,
+    "Diameter": 25,
+    "Distance from Sun": 300,
+    "Orbital Velocity": 14.2,
+    "Max Positions stored": 600,
+    "Color": [ 210, 180, 140, 255 ]
+  },
+  "Saturn": {
+    "Mass": 30,
+    "Diameter": 50,
+    "Distance from Sun": 400,
+    "Orbital Velocity": 10.6,
+    "Max Positions stored": 1000,
+    "Color": [ 210, 180, 140, 255 ]
+  },
+  "Uranus": {
+    "Mass": 15,
+    "Diameter": 20,
+    "Distance from Sun": 500,
+    "Orbital Velocity": 8.2,
+    "Max Positions stored": 2000,
+    "Color": [ 135, 206, 235, 255 ]
+  },
+  "Neptune": {
+    "Mass": 10,
+    "Diameter": 15,
+    "Distance from Sun": 600,
+    "Orbital Velocity": 7,
+    "Max Positions stored": 3000,
+    "Color": [ 30, 144, 255, 255 ]
+  },
+  "Ceres": {
+    "Mass": 0.00015,
+    "Diameter": 4,
+    "Distance from Sun": 700,
+    "Orbital Velocity": 17.9,
+    "Max Positions stored": 400,
+    "Color": [ 139, 69, 19, 255 ]
+  },
+  "Vesta": {
+    "Mass": 0.00026,
+    "Diameter": 8,
+    "Distance from Sun": 800,
+    "Orbital Velocity": 19.3,
+    "Max Positions stored": 450,
+    "Color": [ 210, 105, 30, 255 ]
+  },
+  "Pluto": {
+    "Mass": 0.0022,
+    "Diameter": 2,
+    "Distance from Sun": 900,
+    "Orbital Velocity": 4.7,
+    "Max Positions stored": 3500,
+    "Color": [ 128, 128, 128, 255 ]
+  },
+  "Eris": {
+    "Mass": 0.0028,
+    "Diameter": 5,
+    "Distance from Sun": 1000,
+    "Orbital Velocity": 3.4,
+    "Max Positions stored": 4200,
+    "Color": [ 255, 228, 181, 255 ]
+  },
+  "Haumea": {
+    "Mass": 0.00067,
+    "Diameter": 3,
+    "Distance from Sun": 1100,
+    "Orbital Velocity": 4.48,
+    "Max Positions stored": 3800,
+    "Color": [ 245, 222, 179, 255 ]
+  },
+  "Makemake": {
+    "Mass": 0.00067,
+    "Diameter": 2,
+    "Distance from Sun": 1200,
+    "Orbital Velocity": 4.419,
+    "Max Positions stored": 3900,
+    "Color": [ 205, 133, 63, 255 ]
+  },
+  "Eros": {
+    "Mass": 0.00067,
+    "Diameter": 7,
+    "Distance from Sun": 1300,
+    "Orbital Velocity": 5,
+    "Max Positions stored": 500,
+    "Color": [ 255, 182, 193, 255 ]
+  },
+  "Icarus": {
+    "Mass": 0.00067,
+    "Diameter": 30,
+    "Distance from Sun": 1400,
+    "Orbital Velocity": 4,
+    "Max Positions stored": 550,
+    "Color": [ 255, 165, 0, 255 ]
+  },
+  "Gaspra": {
+    "Mass": 0.00067,
+    "Diameter": 5,
+    "Distance from Sun": 1500,
+    "Orbital Velocity": 3,
+    "Max Positions stored": 480,
+    "Color": [ 169, 169, 169, 255 ]
+  },
+  "Ida": {
+    "Mass": 0.00067,
+    "Diameter": 5.5,
+    "Distance from Sun": 430,
+    "Orbital Velocity": 17.3,
+    "Max Positions stored": 510,
+    "Color": [ 205, 133, 63, 255 ]
+  },
+  "Mathilde": {
+    "Mass": 0.00067,
+    "Diameter": 9,
+    "Distance from Sun": 520,
+    "Orbital Velocity": 12.5,
+    "Max Positions stored": 300,
+    "Color": [ 128, 128, 128, 255 ]
+  },
+  "Pallas": {
+    "Mass": 0.00067,
+    "Diameter": 6,
+    "Distance from Sun": 414,
+    "Orbital Velocity": 16.4,
+    "Max Positions stored": 400,
+    "Color": [ 192, 192, 192, 255 ]
+  },
+  "Lutetia": {
+    "Mass": 0.00067,
+    "Diameter": 15.0,
+    "Distance from Sun": 470,
+    "Orbital Velocity": 19.6,
+    "Max Positions stored": 420,
+    "Color": [ 192, 192, 192, 255 ]
+  },
+  "Bamberga": {
+    "Mass": 0.00067,
+    "Diameter": 13.0,
+    "Distance from Sun": 524,
+    "Orbital Velocity": 16.2,
+    "Max Positions stored": 440,
+    "Color": [ 210, 105, 30, 255 ]
+  },
+  "Psyche": {
+    "Mass": 0.00067,
+    "Diameter": 19,
+    "Distance from Sun": 467,
+    "Orbital Velocity": 19.5,
+    "Max Positions stored": 390,
+    "Color": [ 135, 206, 235, 255 ]
+  },
+  "Amphitrite": {
+    "Mass": 0.00067,
+    "Diameter": 2.0,
+    "Distance from Sun": 416,
+    "Orbital Velocity": 16.7,
+    "Max Positions stored": 460,
+    "Color": [ 255, 215, 0, 255 ]
+  },
+  "Egeria": {
+    "Mass": 0.00067,
+    "Diameter": 2.6,
+    "Distance from Sun": 290,
+    "Orbital Velocity": 23.4,
+    "Max Positions stored": 490,
+    "Color": [ 255, 192, 203, 255 ]
+  },
+  "Herculina": {
+    "Mass": 0.00067,
+    "Diameter": 3.3,
+    "Distance from Sun": 353,
+    "Orbital Velocity": 20.8,
+    "Max Positions stored": 470,
+    "Color": [ 135, 206, 250, 255 ]
+  },
+  "Kalliope": {
+    "Mass": 0.00067,
+    "Diameter": 2.3,
+    "Distance from Sun": 458,
+    "Orbital Velocity": 17.1,
+    "Max Positions stored": 430,
+    "Color": [ 210, 180, 140, 255 ]
+  },
+  "Nysa": {
+    "Mass": 0.00067,
+    "Diameter": 1.9,
+    "Distance from Sun": 426,
+    "Orbital Velocity": 17.5,
+    "Max Positions stored": 510,
+    "Color": [ 176, 224, 230, 255 ]
+  },
+  "Sylvia": {
+    "Mass": 0.00067,
+    "Diameter": 3.5,
+    "Distance from Sun": 495,
+    "Orbital Velocity": 15.8,
+    "Max Positions stored": 400,
+    "Color": [ 255, 228, 196, 255 ]
+  },
+  "Asteroid1": {
+    "Mass": 0.00067,
+    "Diameter": 1.5,
+    "Distance from Sun": 280,
+    "Orbital Velocity": 22.3,
+    "Max Positions stored": 420,
+    "Color": [ 255, 140, 0, 255 ]
+  },
+  "Asteroid2": {
+    "Mass": 0.00067,
+    "Diameter": 2.2,
+    "Distance from Sun": 330,
+    "Orbital Velocity": 20.5,
+    "Max Positions stored": 430,
+    "Color": [ 255, 105, 180, 255 ]
+  },
+  "Asteroid3": {
+    "Mass": 0.00067,
+    "Diameter": 1.8,
+    "Distance from Sun": 290,
+    "Orbital Velocity": 23.1,
+    "Max Positions stored": 440,
+    "Color": [ 0, 255, 255, 255 ]
+  },
+  "Asteroid4": {
+    "Mass": 0.00067,
+    "Diameter": 3.0,
+    "Distance from Sun": 340,
+    "Orbital Velocity": 19.8,
+    "Max Positions stored": 450,
+    "Color": [ 255, 69, 0, 255 ]
+  },
+  "Asteroid5": {
+    "Mass": 0.00067,
+    "Diameter": 2.5,
+    "Distance from Sun": 310,
+    "Orbital Velocity": 21.2,
+    "Max Positions stored": 460,
+    "Color": [ 154, 205, 50, 255 ]
+  },
+  "Asteroid6": {
+    "Mass": 0.00067,
+    "Diameter": 1.4,
+    "Distance from Sun": 270,
+    "Orbital Velocity": 22.8,
+    "Max Positions stored": 470,
+    "Color": [ 255, 215, 0, 255 ]
+  },
+  "Asteroid7": {
+    "Mass": 0.00067,
+    "Diameter": 2.7,
+    "Distance from Sun": 320,
+    "Orbital Velocity": 20.1,
+    "Max Positions stored": 480,
+    "Color": [ 255, 20, 147, 255 ]
+  },
+  "Asteroid8": {
+    "Mass": 0.00067,
+    "Diameter": 1.7,
+    "Distance from Sun": 302,
+    "Orbital Velocity": 22.0,
+    "Max Positions stored": 490,
+    "Color": [ 173, 216, 230, 255 ]
+  },
+  "Asteroid9": {
+    "Mass": 0.00067,
+    "Diameter": 2.9,
+    "Distance from Sun": 335,
+    "Orbital Velocity": 19.9,
+    "Max Positions stored": 500,
+    "Color": [ 255, 228, 181, 255 ]
+  },
+  "Asteroid10": {
+    "Mass": 0.00067,
+    "Diameter": 1.6,
+    "Distance from Sun": 285,
+    "Orbital Velocity": 22.5,
+    "Max Positions stored": 510,
+    "Color": [ 240, 230, 140, 255 ]
+  },
+  "Asteroid11": {
+    "Mass": 0.00067,
+    "Diameter": 1.2,
+    "Distance from Sun": 295,
+    "Orbital Velocity": 22.7,
+    "Max Positions stored": 520,
+    "Color": [ 255, 215, 0, 255 ]
+  },
+  "Asteroid12": {
+    "Mass": 0.00067,
+    "Diameter": 2.4,
+    "Distance from Sun": 305,
+    "Orbital Velocity": 21.4,
+    "Max Positions stored": 530,
+    "Color": [ 255, 69, 0, 255 ]
+  },
+  "Asteroid13": {
+    "Mass": 0.00067,
+    "Diameter": 1.9,
+    "Distance from Sun": 315,
+    "Orbital Velocity": 20.9,
+    "Max Positions stored": 540,
+    "Color": [ 30, 144, 255, 255 ]
+  },
+  "Asteroid14": {
+    "Mass": 0.00067,
+    "Diameter": 3.1,
+    "Distance from Sun": 325,
+    "Orbital Velocity": 19.7,
+    "Max Positions stored": 550,
+    "Color": [ 135, 206, 235, 255 ]
+  },
+  "Asteroid15": {
+    "Mass": 0.00067,
+    "Diameter": 1.6,
+    "Distance from Sun": 335,
+    "Orbital Velocity": 18.3,
+    "Max Positions stored": 560,
+    "Color": [ 255, 165, 0, 255 ]
+  },
+  "Asteroid16": {
+    "Mass": 0.00067,
+    "Diameter": 2.8,
+    "Distance from Sun": 345,
+    "Orbital Velocity": 17.8,
+    "Max Positions stored": 570,
+    "Color": [ 210, 105, 30, 255 ]
+  },
+  "Asteroid17": {
+    "Mass": 0.00067,
+    "Diameter": 2.1,
+    "Distance from Sun": 355,
+    "Orbital Velocity": 16.4,
+    "Max Positions stored": 580,
+    "Color": [ 255, 192, 203, 255 ]
+  },
+  "Asteroid18": {
+    "Mass": 0.00067,
+    "Diameter": 1.5,
+    "Distance from Sun": 365,
+    "Orbital Velocity": 15.9,
+    "Max Positions stored": 590,
+    "Color": [ 192, 192, 192, 255 ]
+  },
+  "Asteroid19": {
+    "Mass": 0.00067,
+    "Diameter": 2.3,
+    "Distance from Sun": 375,
+    "Orbital Velocity": 14.5,
+    "Max Positions stored": 600,
+    "Color": [ 169, 169, 169, 255 ]
+  },
+  "Asteroid20": {
+    "Mass": 0.00067,
+    "Diameter": 1.8,
+    "Distance from Sun": 385,
+    "Orbital Velocity": 13.8,
+    "Max Positions stored": 610,
+    "Color": [ 255, 20, 147, 255 ]
+  }
+}

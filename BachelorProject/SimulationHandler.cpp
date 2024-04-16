@@ -55,7 +55,7 @@ int SimulationHandler::save_results()
 void SimulationHandler::update_bodies(float dt)
 {
     auto start_time = Clock::now();
-    barnes_hut(dt);
+    naive_nbody(dt);
 
 
     auto end_time = Clock::now();
@@ -74,14 +74,32 @@ void SimulationHandler::initialize(const std::string& filename)
 	planetData = fh.get_planet_data();
     int heightMid = height / 2;
     int widthMid = width / 2;
+    // we first need g, to initialize the bodies with it
     for (auto& planet : planetData.items()) 
     {
         try 
         {
             const auto& key = planet.key();
             const auto& value = planet.value();
+            if (key == "g")
+            {
+                g = value;
+            }
+        }
+        catch(const std::exception& e){
+            std::cerr << "Error: Did not find G" << ": " << e.what() << std::endl;
+        }
+    }
+    for (auto& planet : planetData.items())
+    {
+        try
+        {
+            const auto& key = planet.key();
+            const auto& value = planet.value();
             if (key != "g")
             {
+                const auto& key = planet.key();
+                const auto& value = planet.value();
                 float mass = static_cast<float>(value["Mass"].get<double>());
                 float diameter = static_cast<float>(value["Diameter"].get<double>());
                 float distanceFromSun = static_cast<float>(value["Distance from Sun"].get<double>());
@@ -100,19 +118,16 @@ void SimulationHandler::initialize(const std::string& filename)
                 CelestialBody body(key, mass, diameter, distanceFromSun, sf::Vector2f(0, orbitalVelocity), position, maxPos, color, g);
                 bodies.emplace_back(body);
             }
-            else {
-                g = value;
-            }
+            
         }
-        catch(const std::exception& e){
-            std::cerr << "Error: Could not create Object" << ": " << e.what() << std::endl;
+        catch (const std::exception& e) {
+            std::cerr << "Error:Could not create body" << ": " << e.what() << std::endl;
         }
     }
 }
 
 void SimulationHandler::naive_nbody(float dt) 
 {
-    auto start_time = Clock::now();
     for (auto& body : bodies) 
     {
         body.calculate_force(dt, bodies);
@@ -121,10 +136,6 @@ void SimulationHandler::naive_nbody(float dt)
     {
         body.update_position(dt);
     }
-    auto end_time = Clock::now();
-    auto elapsed_time = std::chrono::duration_cast<std::chrono::duration<float>>(end_time - start_time);
-    float deltaTime = elapsed_time.count();
-    results.push_back(deltaTime);
 }
 
 void SimulationHandler::fast_multipole(float dt)

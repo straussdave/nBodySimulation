@@ -63,5 +63,8 @@
     <None Include="stylized_planet_data.json">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="100bodies.json">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -22,7 +22,7 @@ private:
 	double theta;
 	float g;
 	
-	void insert_body_to_quadtree(QuadtreeNode* node, CelestialBody* body);
+	void insert_body_to_quadtree(QuadtreeNode* node, CelestialBody* body, int lvl);
 	QuadtreeNode* create_quad_tree_root_node();
 	void destroy_quadtree(QuadtreeNode* node);
 	bool is_internal_node(QuadtreeNode* node);

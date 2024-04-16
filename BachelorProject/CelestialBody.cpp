@@ -82,6 +82,7 @@ void CelestialBody::calculate_force(float dt, std::vector<CelestialBody> otherBo
 			float vectorMagnitude = sqrt(pow(distanceVector.x, 2) + pow(distanceVector.y, 2));
 			vectorMagnitude += 0.01f;
 			sf::Vector2f normalizedVector = distanceVector / vectorMagnitude;
+			//g is 0 here because it doesnt get initialized properly. fix this
 			force += (g * normalizedVector * mass * body.mass) / pow(vectorMagnitude, 2.0f);
 		}
 	}

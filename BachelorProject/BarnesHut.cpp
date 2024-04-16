@@ -18,19 +18,26 @@ BarnesHut::QuadtreeNode* BarnesHut::create_quad_tree_root_node() {
 void BarnesHut::build_quadtree(std::vector<CelestialBody> bodies)
 {
     for (auto& body : bodies) {
-        insert_body_to_quadtree(root, &body);
+        insert_body_to_quadtree(root, &body, 0);
     }
 }
 
-void BarnesHut::insert_body_to_quadtree(QuadtreeNode* node, CelestialBody* body)
+void BarnesHut::insert_body_to_quadtree(QuadtreeNode* node, CelestialBody* body, int lvl)
 {
+    if (lvl > 12)
+    {
+        node->body = body;
+        node->totalMass = calculate_total_mass(node);
+        node->centerOfMass = calculate_center_of_mass(node);
+        return;
+    }
     //If node x does not contain a body, put the new body b here.
     if (node->body == nullptr)
     {
         if (is_internal_node(node)) {
             //If node x is an internal node, update the center-of-mass and total mass of x. Recursively insert the body b in the appropriate quadrant.
             int q = get_quadrant_to_insert_node(node->bounds, body);
-            insert_body_to_quadtree(node->children[q], body);
+            insert_body_to_quadtree(node->children[q], body, lvl + 1);
             node->totalMass = calculate_total_mass(node);
             node->centerOfMass = calculate_center_of_mass(node);
         }
@@ -48,10 +55,10 @@ void BarnesHut::insert_body_to_quadtree(QuadtreeNode* node, CelestialBody* body)
     {
         create_quadrants(node);
         int q = get_quadrant_to_insert_node(node->bounds, node->body);
-        insert_body_to_quadtree(node->children[q], node->body);
+        insert_body_to_quadtree(node->children[q], node->body, lvl + 1);
         node->body = nullptr;
         q = get_quadrant_to_insert_node(node->bounds, body);
-        insert_body_to_quadtree(node->children[q], body);
+        insert_body_to_quadtree(node->children[q], body, lvl + 1);
         node->totalMass = calculate_total_mass(node);
         node->centerOfMass = calculate_center_of_mass(node);
     }

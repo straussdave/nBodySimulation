@@ -16,7 +16,7 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(WIN_SIZE), "My window", sf::Style::Close, settings);
     window.setVerticalSyncEnabled(true);
 
-    SimulationHandler sim("stylized_planet_data.json", WIN_SIZE, window);
+    SimulationHandler sim("100bodies.json", WIN_SIZE, window);
     
     sf::View view = window.getDefaultView();
     float zoomLevel = 1.0f; // Initial zoom level

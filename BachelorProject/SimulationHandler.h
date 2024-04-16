@@ -16,7 +16,6 @@ public:
 	~SimulationHandler();
 	void update_bodies(float dt);
 	void print_bodies_positions();
-	void register_body_to_renderer();
 	int save_results();
 	
 private:
@@ -32,7 +31,7 @@ private:
 	std::vector<float> results;
 
 	void initialize(const std::string& filename);
-
+	void register_body_to_renderer();
 	void naive_nbody(float dt);
 	void fast_multipole(float dt);
 
