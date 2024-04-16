@@ -33,6 +33,9 @@
     <ClCompile Include="BarnesHut.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AllPairs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CelestialBody.h">
@@ -48,6 +51,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BarnesHut.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AllPairs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

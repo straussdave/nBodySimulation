@@ -6,6 +6,7 @@
 #include "Renderer.h"
 #include <cmath>
 #include "BarnesHut.h"
+#include "AllPairs.h"
 using json = nlohmann::json;
 
 class SimulationHandler
@@ -26,6 +27,7 @@ private:
 	std::vector<CelestialBody> bodies;
 	json planetData;
 	BarnesHut* bh;
+	AllPairs* ap;
 	double theta;
 	float g;
 	std::vector<float> results;

@@ -14,11 +14,13 @@ SimulationHandler::SimulationHandler(const std::string& filename, int w, int h, 
     renderer = Renderer::get_instance(window);
     register_body_to_renderer();
     bh = new BarnesHut(0.5, g);
+    ap = new AllPairs(g);
 }
 
 SimulationHandler::~SimulationHandler()
 {
     delete bh;
+    delete ap;
 }
 
 /// <summary>
@@ -55,8 +57,8 @@ int SimulationHandler::save_results()
 void SimulationHandler::update_bodies(float dt)
 {
     auto start_time = Clock::now();
-    naive_nbody(dt);
 
+    naive_nbody(dt);
 
     auto end_time = Clock::now();
     auto elapsed_time = std::chrono::duration_cast<std::chrono::duration<float>>(end_time - start_time);
@@ -130,7 +132,7 @@ void SimulationHandler::naive_nbody(float dt)
 {
     for (auto& body : bodies) 
     {
-        body.calculate_force(dt, bodies);
+        body.apply_force(ap->calculate_force(&body, bodies), dt);
     }
     for (auto& body : bodies)
     {
