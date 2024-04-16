@@ -58,7 +58,7 @@ void SimulationHandler::update_bodies(float dt)
 {
     auto start_time = Clock::now();
 
-    naive_nbody(dt);
+    barnes_hut(dt);
 
     auto end_time = Clock::now();
     auto elapsed_time = std::chrono::duration_cast<std::chrono::duration<float>>(end_time - start_time);
