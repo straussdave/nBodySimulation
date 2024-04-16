@@ -14,7 +14,6 @@ public:
 	std::string name;
 	float mass;
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
-	void calculate_force(float dt, std::vector<CelestialBody> otherBodies);
 	void apply_force(sf::Vector2f force, float deltaTime);
 	sf::Vector2f update_position(float deltaTime);
 	sf::Color get_color();

@@ -23,6 +23,11 @@ CelestialBody::CelestialBody(std::string n, float m, float diam, float distance,
 	g = G;
 }
 
+/// <summary>
+/// implements the draw function for the drawable class
+/// </summary>
+/// <param name="target"></param>
+/// <param name="states"></param>
 void CelestialBody::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	sf::Transform transform = getTransform();
@@ -62,33 +67,20 @@ sf::Vector2f CelestialBody::update_position(float dt)
 	return position;
 }
 
+/// <summary>
+/// gets color of the body
+/// </summary>
+/// <returns>color</returns>
 sf::Color CelestialBody::get_color()
 {
 	return color;
 }
 
 /// <summary>
-/// Updates the velocity using the acceleration of the body
+/// applies force to the body, in proportion to deltaTime
 /// </summary>
-/// <returns>updated velocity</returns>
-void CelestialBody::calculate_force(float dt, std::vector<CelestialBody> otherBodies)
-{
-	sf::Vector2f force;
-	for (auto& body : otherBodies)
-	{
-		if (body.name != name)
-		{
-			sf::Vector2f distanceVector = sf::Vector2f(body.position.x - position.x, body.position.y - position.y);
-			float vectorMagnitude = sqrt(pow(distanceVector.x, 2) + pow(distanceVector.y, 2));
-			vectorMagnitude += 0.01f;
-			sf::Vector2f normalizedVector = distanceVector / vectorMagnitude;
-			//g is 0 here because it doesnt get initialized properly. fix this
-			force += (g * normalizedVector * mass * body.mass) / pow(vectorMagnitude, 2.0f);
-		}
-	}
-	apply_force(force, dt);
-}
-
+/// <param name="force"></param>
+/// <param name="deltaTime"></param>
 void CelestialBody::apply_force(sf::Vector2f force, float deltaTime) {
 	acceleration = force / mass;
 	velocity += acceleration * deltaTime;
