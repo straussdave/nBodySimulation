@@ -193,7 +193,7 @@ sf::Vector2f BarnesHut::calculate_force_from_node(QuadtreeNode* node, CelestialB
         return sf::Vector2f(0.0f, 0.0f);
     //If the current node is an external node (and it is not body b), 
     //calculate the force exerted by the current node on b
-    if (!is_internal_node(node) && (node->body != nullptr && node->body->name != body->name))
+    if (!is_internal_node(node) && (node->body != nullptr && node->body != body))
     {
        return calculate_force(body, node);
     }

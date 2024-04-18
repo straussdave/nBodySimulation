@@ -13,7 +13,7 @@ SimulationHandler::SimulationHandler(const std::string& filename, int w, int h, 
     initialize(filename);
     renderer = Renderer::get_instance(window);
     register_body_to_renderer();
-    bh = new BarnesHut(0.5, g);
+    bh = new BarnesHut(1, g);
     ap = new AllPairs(g);
 }
 
@@ -117,7 +117,7 @@ void SimulationHandler::initialize(const std::string& filename)
                 sf::Color color(red, green, blue, alpha);
                 sf::Vector2f position = sf::Vector2f(static_cast<float>(widthMid), static_cast<float>(heightMid));
                 position.x += distanceFromSun;
-                CelestialBody body(key, mass, diameter, distanceFromSun, sf::Vector2f(0, orbitalVelocity), position, maxPos, color, g);
+                CelestialBody body(key, mass, diameter, distanceFromSun, sf::Vector2f(0, orbitalVelocity), position, 1, color, g);
                 bodies.emplace_back(body);
             }
             

@@ -40,6 +40,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="100bodies.json" />
+    <None Include="125bodies.json" />
+    <None Include="150bodies.json" />
+    <None Include="25bodies.json" />
+    <None Include="50bodies.json" />
+    <None Include="75bodies.json" />
     <None Include="planet_data_with_moon.json" />
     <None Include="stylized_planet_data.json" />
   </ItemGroup>

@@ -72,5 +72,20 @@
     <None Include="100bodies.json">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="75bodies.json">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="50bodies.json">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="25bodies.json">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="125bodies.json">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="150bodies.json">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
