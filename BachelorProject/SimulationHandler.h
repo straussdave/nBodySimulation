@@ -35,7 +35,6 @@ private:
 	void initialize(const std::string& filename);
 	void register_body_to_renderer();
 	void naive_nbody(float dt);
-	void fast_multipole(float dt);
 
 	void barnes_hut(float dt);
 

@@ -138,10 +138,6 @@ void SimulationHandler::naive_nbody(float dt)
     }
 }
 
-void SimulationHandler::fast_multipole(float dt)
-{
-}
-
 void SimulationHandler::barnes_hut(float dt)
 {    
     bh->build_quadtree(bodies);
