@@ -56,15 +56,13 @@ int SimulationHandler::save_results()
 /// </summary>
 void SimulationHandler::update_bodies(float dt)
 {
-    auto start_time = Clock::now();
-
     barnes_hut(dt);
-
+    auto start_time = Clock::now();
+    renderer->render();
     auto end_time = Clock::now();
     auto elapsed_time = std::chrono::duration_cast<std::chrono::duration<float>>(end_time - start_time);
     float deltaTime = elapsed_time.count();
     results.push_back(deltaTime);
-    renderer->render();
 }
 
 /// <summary>
